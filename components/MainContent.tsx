@@ -5,9 +5,9 @@ import Header from "./Header";
 import Hero from "./Hero";
 import About from "./About";
 import Services from "./Services";
+import VideoSection from "./VideoSection";
 import HowItWorks from "./HowItWorks";
 import Gallery from "./Gallery";
-import WhyUs from "./WhyUs";
 import Reviews from "./Reviews";
 import CTABanner from "./CTABanner";
 import Location from "./Location";
@@ -41,9 +41,9 @@ export default function MainContent() {
         <div className="relative z-10 rounded-t-[2.5rem] sm:rounded-t-[4rem] bg-ivory shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.5)] border-t border-white/20">
           <About />
           <Services onBook={bookService} />
+          <VideoSection />
           <HowItWorks />
           <Gallery />
-          <WhyUs />
           <Reviews />
           <CTABanner />
           <Location />

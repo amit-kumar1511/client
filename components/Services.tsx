@@ -194,6 +194,21 @@ export const SERVICES = DETAILED_SERVICES.map((s) => ({
 export default function Services({ onBook }: { onBook: (name: string) => void }) {
   return (
     <section id="services" className="py-0 bg-background">
+      {/* Section Header */}
+      <div className="py-12 sm:py-16 bg-[#f8f5f0] text-center border-b border-[#e5dfd3]/70">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="inline-flex items-center justify-center gap-2 text-xs tracking-[0.25em] uppercase text-[#9d7431] font-medium">
+            <span className="w-6 h-px bg-[#d8ab5e]" /> Pure Relaxation <span className="w-6 h-px bg-[#d8ab5e]" />
+          </div>
+          <h2 className="mt-2 font-serif text-3xl sm:text-4xl lg:text-5xl text-[#16211c] tracking-tight">
+            Our Spa Services
+          </h2>
+          <p className="mt-3 text-sm sm:text-base text-[#6d7a72] max-w-2xl mx-auto font-lato">
+            Explore our signature wellness therapies, therapeutic body massages, and holistic treatments designed for deep relaxation and revitalization.
+          </p>
+        </div>
+      </div>
+
       <div className="relative left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] w-screen overflow-hidden">
         <div className="w-full flex flex-col">
           {DETAILED_SERVICES.map((ds, idx) => (

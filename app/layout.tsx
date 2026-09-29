@@ -1,5 +1,17 @@
 import type { Metadata, Viewport } from "next";
-import { Marcellus, Karla, Noto_Sans_Devanagari } from "next/font/google";
+import {
+  Marcellus,
+  Karla,
+  Noto_Sans_Devanagari,
+  Alex_Brush,
+  Cormorant_Garamond,
+  Playfair_Display,
+  Great_Vibes,
+  Allura,
+  Montserrat,
+  Lato,
+  Open_Sans,
+} from "next/font/google";
 import "./globals.css";
 
 const marcellus = Marcellus({
@@ -20,6 +32,62 @@ const devanagari = Noto_Sans_Devanagari({
   subsets: ["devanagari", "latin"],
   weight: ["300", "400", "500", "600"],
   variable: "--font-devanagari",
+  display: "swap",
+});
+
+const alexBrush = Alex_Brush({
+  weight: "400",
+  subsets: ["latin"],
+  variable: "--font-alex-brush",
+  display: "swap",
+});
+
+const cormorant = Cormorant_Garamond({
+  weight: ["400", "500", "600", "700"],
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["600", "700"],
+  variable: "--font-playfair",
+  display: "swap",
+});
+
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-great-vibes",
+  display: "swap",
+});
+
+const allura = Allura({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-allura",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
+const lato = Lato({
+  subsets: ["latin"],
+  weight: ["300", "400", "700"],
+  variable: "--font-lato",
+  display: "swap",
+});
+
+const openSans = Open_Sans({
+  subsets: ["latin"],
+  weight: ["400", "500", "600"],
+  variable: "--font-open-sans",
   display: "swap",
 });
 
@@ -106,7 +174,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${marcellus.variable} ${karla.variable} ${devanagari.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${marcellus.variable} ${karla.variable} ${devanagari.variable} ${alexBrush.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${allura.variable} ${montserrat.variable} ${lato.variable} ${openSans.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

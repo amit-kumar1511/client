@@ -1,144 +1,170 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
+import { X, ChevronLeft, ChevronRight, ZoomIn } from "lucide-react";
 
-
-export const GALLERY = [
-  { url: "/images/massage2.jpg" },
-  { url: "/images/gallery_2.jpg" },
-  { url: "/images/gallery_3.jpg" },
-  { url: "/images/gallery_4.jpg" },
-  { url: "/images/gallery_5.jpg" },
-  { url: "/images/room1.jpg" },
-  { url: "/images/room2.jpg" },
-  { url: "/images/massage1.jpg" },
+export const GALLERY_IMAGES = [
+  { url: "/images/gallery/spa_treatment_room_1790677609379.jpg", aspect: "aspect-[4/3]" },
+  { url: "/images/gallery/spa_massage_therapy_1790677648922.jpg", aspect: "aspect-[3/4]" },
+  { url: "/images/gallery/spa_facial_treatment_1790677797500.jpg", aspect: "aspect-square" },
+  { url: "/images/gallery/spa_relaxation_lounge_1790677835079.jpg", aspect: "aspect-[3/2]" },
+  { url: "/images/gallery/spa_outdoor_pool_1790677901249.jpg", aspect: "aspect-[3/4]" },
+  { url: "/images/gallery/spa_indoor_pool_1790677866571.jpg", aspect: "aspect-[4/3]" },
+  { url: "/images/gallery/spa_waterfall_1790677933644.jpg", aspect: "aspect-[3/4]" },
+  { url: "/images/gallery/spa_cedar_sauna_1790678002808.jpg", aspect: "aspect-square" },
+  { url: "/images/gallery/spa_hot_stones_1790678142700.jpg", aspect: "aspect-[3/4]" },
+  { url: "/images/gallery/spa_steam_room_1790678094317.jpg", aspect: "aspect-[4/3]" },
+  { url: "/images/gallery/spa_aromatherapy_oils_1790678183092.jpg", aspect: "aspect-square" },
+  { url: "/images/gallery/spa_candles_towels_1790678223949.jpg", aspect: "aspect-[3/4]" },
+  { url: "/images/aroma.webp", aspect: "aspect-[4/3]" },
+  { url: "/images/chamber.webp", aspect: "aspect-[3/4]" },
+  { url: "/images/room1.jpg", aspect: "aspect-square" },
+  { url: "/images/massage1.jpg", aspect: "aspect-[4/3]" },
+  { url: "/images/reception.jpg", aspect: "aspect-[3/4]" },
+  { url: "/images/room2.jpg", aspect: "aspect-square" },
+  { url: "/images/why_us_candles.jpg", aspect: "aspect-[3/4]" },
+  { url: "/images/why_us_massage.jpg", aspect: "aspect-[4/3]" },
+  { url: "/images/massage3.png", aspect: "aspect-square" },
+  { url: "/images/massage4.png", aspect: "aspect-[3/4]" },
+  { url: "/images/hero_spa_reference.jpg", aspect: "aspect-[3/2]" },
+  { url: "/images/about_2.jpg", aspect: "aspect-[4/3]" },
 ];
 
-function SectionLabel({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="inline-flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-gold font-medium">
-      <span className="w-8 h-px bg-gold" /> {children} <span className="w-8 h-px bg-gold" />
-    </div>
-  );
-}
-
-function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-80px" }}
-      transition={{ duration: 0.7, delay }}
-    >
-      {children}
-    </motion.div>
-  );
-}
-
 export default function Gallery() {
-  const [idx, setIdx] = useState<number | null>(null);
-  const close = () => setIdx(null);
-  const prev = () => setIdx((i) => (i === null ? i : (i - 1 + GALLERY.length) % GALLERY.length));
-  const next = () => setIdx((i) => (i === null ? i : (i + 1) % GALLERY.length));
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const closeLightbox = () => setSelectedIndex(null);
+  const prevImage = () =>
+    setSelectedIndex((i) => (i === null ? null : (i - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length));
+  const nextImage = () =>
+    setSelectedIndex((i) => (i === null ? null : (i + 1) % GALLERY_IMAGES.length));
 
   useEffect(() => {
-    if (idx === null) return;
-    const on = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-      if (e.key === "ArrowLeft") prev();
-      if (e.key === "ArrowRight") next();
+    if (selectedIndex === null) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      if (e.key === "ArrowLeft") prevImage();
+      if (e.key === "ArrowRight") nextImage();
     };
-    window.addEventListener("keydown", on);
-    return () => window.removeEventListener("keydown", on);
-  }, [idx]);
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedIndex]);
+
+  useEffect(() => {
+    if (selectedIndex !== null) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedIndex]);
 
   return (
-    <section id="gallery" className="relative py-20 sm:py-28 bg-ivory overflow-hidden">
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
-          <FadeUp>
-            <SectionLabel>Gallery</SectionLabel>
-            <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl text-cocoa">
-              Explore <span className="italic text-gold">Our Spa</span>
-            </h2>
-          </FadeUp>
+    <section id="gallery" className="relative py-16 sm:py-24 md:py-28 bg-[#f8f5f0] text-[#16211c] overflow-hidden">
+      <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
+        
+        {/* Centered Luxury Header */}
+        <div className="text-center border-b border-[#e5dfd3]/70 pb-6 mb-8 sm:mb-12">
+          <div className="inline-flex items-center justify-center gap-2 text-xs tracking-[0.25em] uppercase text-[#9d7431] font-medium">
+            <span className="w-6 h-px bg-[#d8ab5e]" /> Sanctuary Photography <span className="w-6 h-px bg-[#d8ab5e]" />
+          </div>
+          <h2 className="mt-2 font-serif text-3xl sm:text-4xl lg:text-5xl text-[#16211c] tracking-tight">
+            Spa Gallery
+          </h2>
         </div>
-        <div className="mt-14 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
-          {GALLERY.map((img, i) => (
-            <FadeUp key={i} delay={(i % 4) * 0.05}>
-              <button
-                onClick={() => setIdx(i)}
-                className={`group block relative overflow-hidden rounded-2xl shadow-soft w-full ${i % 5 === 0 ? "aspect-[3/4]" : "aspect-square"
-                  }`}
-              >
-                <Image
-                  src={img.url}
-                  alt={`Spa gallery ${i + 1}`}
-                  fill
-                  sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 bg-espresso/0 group-hover:bg-espresso/30 transition-colors" />
-              </button>
-            </FadeUp>
+
+        {/* Responsive Masonry Grid Composition (2 cols on mobile, up to 5 cols on desktop) */}
+        <div className="columns-2 md:columns-3 lg:columns-4 xl:columns-5 gap-3 sm:gap-5 space-y-3 sm:space-y-5">
+          {GALLERY_IMAGES.map((img, i) => (
+            <button
+              key={i}
+              type="button"
+              onClick={() => setSelectedIndex(i)}
+              aria-label={`View spa photograph ${i + 1}`}
+              className={`group block relative w-full overflow-hidden rounded-[14px] sm:rounded-[18px] border border-[#e5dfd3]/80 bg-[#f2ece1]/40 cursor-pointer focus:outline-none focus:ring-2 focus:ring-[#9d7431]/40 ${img.aspect}`}
+            >
+              <Image
+                src={img.url}
+                alt=""
+                fill
+                sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
+                className="w-full h-full object-cover group-hover:brightness-90 transition-none"
+              />
+              
+              {/* Minimal Corner Zoom Icon on Hover */}
+              <div className="absolute top-2.5 right-2.5 sm:top-3 sm:right-3 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#16211c]/60 text-[#f8f5f0] opacity-0 group-hover:opacity-100 flex items-center justify-center pointer-events-none transition-none">
+                <ZoomIn className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+              </div>
+            </button>
           ))}
         </div>
       </div>
 
-      <AnimatePresence>
-        {idx !== null && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] bg-espresso/95 backdrop-blur flex items-center justify-center p-4"
-            onClick={close}
+      {/* Responsive Fullscreen Lightbox with Pure Backdrop Blur */}
+      {selectedIndex !== null && (
+        <div
+          className="fixed inset-0 z-[9999] bg-black/40 backdrop-blur-xl flex flex-col items-center justify-center p-3 sm:p-8 pt-6 sm:pt-20 pb-14 sm:pb-8 overflow-hidden select-none"
+          onClick={closeLightbox}
+        >
+          {/* Previous Button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            aria-label="Previous Image"
+            className="absolute left-2 sm:left-6 z-50 p-2.5 sm:p-3 text-white/90 hover:text-white bg-black/40 hover:bg-black/60 rounded-full border border-white/20 backdrop-blur-md cursor-pointer focus:outline-none"
           >
+            <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
+          {/* Next Button */}
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            aria-label="Next Image"
+            className="absolute right-2 sm:right-6 z-50 p-2.5 sm:p-3 text-white/90 hover:text-white bg-black/40 hover:bg-black/60 rounded-full border border-white/20 backdrop-blur-md cursor-pointer focus:outline-none"
+          >
+            <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6" />
+          </button>
+
+          {/* Perfectly Centered Lightbox Image with Attached Close Button */}
+          <div
+            className="relative max-w-[84vw] sm:max-w-[78vw] max-h-[58vh] sm:max-h-[78vh] flex items-center justify-center rounded-xl my-auto"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button Attached Directly to Image Top-Right Corner */}
             <button
+              type="button"
               onClick={(e) => {
                 e.stopPropagation();
-                close();
+                closeLightbox();
               }}
-              aria-label="Close"
-              className="absolute top-5 right-5 p-2 text-white hover:text-gold"
+              aria-label="Close Lightbox"
+              className="absolute -top-3.5 -right-3.5 sm:-top-4 sm:-right-4 z-[60] p-2 sm:p-2.5 text-white bg-[#16211c] hover:bg-[#9d7431] rounded-full border border-white/30 shadow-xl cursor-pointer focus:outline-none"
             >
-              <X className="w-7 h-7" />
+              <X className="w-4 h-4 sm:w-5 sm:h-5" />
             </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                prev();
-              }}
-              aria-label="Previous"
-              className="absolute left-4 sm:left-8 p-3 text-white hover:text-gold rounded-full bg-white/10"
-            >
-              <ChevronLeft className="w-6 h-6" />
-            </button>
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                next();
-              }}
-              aria-label="Next"
-              className="absolute right-4 sm:right-8 p-3 text-white hover:text-gold rounded-full bg-white/10"
-            >
-              <ChevronRight className="w-6 h-6" />
-            </button>
-            <motion.img
-              key={idx}
-              initial={{ scale: 0.95, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              src={GALLERY[idx].url}
+
+            <img
+              src={GALLERY_IMAGES[selectedIndex].url}
               alt=""
-              onClick={(e) => e.stopPropagation()}
-              className="max-w-[92vw] max-h-[85vh] object-contain rounded-lg shadow-luxury"
+              className="max-w-[84vw] sm:max-w-[78vw] max-h-[58vh] sm:max-h-[78vh] object-contain rounded-xl block mx-auto shadow-2xl pointer-events-auto"
             />
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
+
+
