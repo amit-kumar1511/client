@@ -201,7 +201,7 @@ export default function Services({ onBook }: { onBook: (name: string) => void })
             <span className="w-6 h-px bg-[#d8ab5e]" /> Pure Relaxation <span className="w-6 h-px bg-[#d8ab5e]" />
           </div>
           <h2 className="mt-2 font-serif text-3xl sm:text-4xl lg:text-5xl text-[#16211c] tracking-tight">
-            Our Spa Services
+            Our Spa <span className="italic" style={{ color: "oklch(0.78 0.11 78)" }}>Services</span>
           </h2>
           <p className="mt-3 text-sm sm:text-base text-[#6d7a72] max-w-2xl mx-auto font-lato">
             Explore our signature wellness therapies, therapeutic body massages, and holistic treatments designed for deep relaxation and revitalization.

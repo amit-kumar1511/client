@@ -23,7 +23,7 @@ export default function VideoSection() {
             <span className="w-6 h-px bg-[#d8ab5e]" /> Sanctuary Experience <span className="w-6 h-px bg-[#d8ab5e]" />
           </div>
           <h2 className="mt-2 font-serif text-3xl sm:text-4xl lg:text-5xl text-[#16211c] tracking-tight">
-            Step Into Pure Tranquility
+            Step Into Pure <span className="italic" style={{ color: "oklch(0.78 0.11 78)" }}>Tranquility</span>
           </h2>
         </div>
 

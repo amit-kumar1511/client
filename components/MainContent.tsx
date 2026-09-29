@@ -41,9 +41,9 @@ export default function MainContent() {
         <div className="relative z-10 rounded-t-[2.5rem] sm:rounded-t-[4rem] bg-ivory shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.5)] border-t border-white/20">
           <About />
           <Services onBook={bookService} />
+          <Gallery />
           <VideoSection />
           <HowItWorks />
-          <Gallery />
           <Reviews />
           <CTABanner />
           <Location />

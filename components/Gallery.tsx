@@ -74,7 +74,7 @@ export default function Gallery() {
             <span className="w-6 h-px bg-[#d8ab5e]" /> Sanctuary Photography <span className="w-6 h-px bg-[#d8ab5e]" />
           </div>
           <h2 className="mt-2 font-serif text-3xl sm:text-4xl lg:text-5xl text-[#16211c] tracking-tight">
-            Spa Gallery
+            Spa <span className="italic" style={{ color: "oklch(0.78 0.11 78)" }}>Gallery</span>
           </h2>
         </div>
 
