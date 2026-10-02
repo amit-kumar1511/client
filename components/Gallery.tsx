@@ -65,7 +65,11 @@ export default function Gallery() {
   }, [selectedIndex]);
 
   return (
-    <section id="gallery" className="relative py-16 sm:py-24 md:py-28 bg-[#f8f5f0] text-[#16211c] overflow-hidden">
+    <section
+      id="gallery"
+      className="relative py-16 sm:py-24 md:py-28 text-[#16211c] overflow-hidden"
+      style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}
+    >
       <div className="relative z-10 mx-auto max-w-[1360px] px-4 sm:px-6 lg:px-8">
         
         {/* Centered Luxury Header */}

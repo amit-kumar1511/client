@@ -40,7 +40,10 @@ export default function MainContent() {
         </div>
 
         {/* Overlapping Content Container starting with About Section */}
-        <div className="relative z-10 rounded-t-[2.5rem] sm:rounded-t-[4rem] bg-ivory shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.5)] border-t border-white/20">
+        <div
+          className="relative z-10 rounded-t-[2.5rem] sm:rounded-t-[4rem] shadow-[0_-30px_60px_-15px_rgba(0,0,0,0.5)] border-t border-white/20"
+          style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}
+        >
           <About />
           <TrustHighlights />
           <Services onBook={bookService} />

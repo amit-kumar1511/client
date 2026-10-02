@@ -48,7 +48,11 @@ function InfoRow({ icon: Icon, title, value, href }: { icon: any; title: string;
 
 export default function Location() {
   return (
-    <section id="location" className="py-20 sm:py-28 bg-background">
+    <section
+      id="location"
+      className="py-20 sm:py-28"
+      style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}
+    >
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <FadeUp>

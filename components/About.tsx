@@ -23,7 +23,11 @@ const trustItems = [
 
 export default function About() {
   return (
-    <section id="about" className="relative grid min-h-[680px] grid-cols-1 bg-[#f5f3e9] text-[#14221e] overflow-hidden lg:grid-cols-[42%_58%]">
+    <section
+      id="about"
+      className="relative grid min-h-[680px] grid-cols-1 text-[#14221e] overflow-hidden lg:grid-cols-[42%_58%]"
+      style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}
+    >
       {/* LEFT CONTENT */}
       <div className="relative z-10 flex flex-col justify-center px-6 py-12 sm:px-12 lg:py-16 lg:pl-[11%] lg:pr-8">
 

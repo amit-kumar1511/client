@@ -15,17 +15,20 @@ export default function TrustHighlights() {
   const marqueeItems = [...trustItems, ...trustItems, ...trustItems, ...trustItems];
 
   return (
-    <section className="relative w-full py-4 sm:py-4.5 mt-6 sm:mt-0 bg-[#eae3d2] text-[#172a25] overflow-hidden border-y border-[#d8c397]/40 shadow-sm">
+    <section
+      className="relative w-full py-4 sm:py-4.5 mt-6 sm:mt-0 text-[#172a25] overflow-hidden border-y border-[#d8c397]/40 shadow-sm"
+      style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}
+    >
       {/* Background Ambient Warm Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#e5decb] via-[#eee7d6] to-[#e5decb] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#F5F2E8] via-[#EDE6D7] to-[#F3EEE2] pointer-events-none" />
 
       {/* Subtle Accent Borders Top and Bottom */}
       <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#4d683f]/25 to-transparent" />
       <div className="absolute bottom-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#4d683f]/25 to-transparent" />
 
       {/* Gradient Vignette Fades on Left & Right Edges */}
-      <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-[#e5decb] via-[#e5decb]/90 to-transparent z-10 pointer-events-none" />
-      <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-[#e5decb] via-[#e5decb]/90 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 bottom-0 left-0 w-16 sm:w-32 bg-gradient-to-r from-[#EDE6D7] via-[#EDE6D7]/90 to-transparent z-10 pointer-events-none" />
+      <div className="absolute top-0 bottom-0 right-0 w-16 sm:w-32 bg-gradient-to-l from-[#EDE6D7] via-[#EDE6D7]/90 to-transparent z-10 pointer-events-none" />
 
       {/* Ticker Container */}
       <div className="relative z-0 flex items-center overflow-hidden select-none">
