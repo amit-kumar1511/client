@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import url('https://fonts.cdnfonts.com/css/brittany-signature');
 
 @custom-variant dark (&:is(.dark *));
 
@@ -48,14 +49,24 @@
   --font-marcellus: var(--font-marcellus), 'Marcellus', serif;
   --font-cormorant: var(--font-cormorant), 'Cormorant Garamond', serif;
   --font-script: var(--font-alex-brush), 'Alex Brush', cursive;
+  --font-brittany: 'Brittany Signature', var(--font-alex-brush), 'Alex Brush', cursive;
   --font-karla: var(--font-karla), 'Karla', sans-serif;
   --font-devanagari: var(--font-devanagari), 'Noto Sans Devanagari', sans-serif;
   --font-playfair: var(--font-playfair), 'Playfair Display', Georgia, serif;
+  --font-inter: var(--font-inter), 'Inter', Arial, sans-serif;
+  --font-caveat: var(--font-caveat), 'Caveat', 'Cormorant Garamond', cursive;
   --font-great-vibes: var(--font-great-vibes), 'Great Vibes', cursive;
   --font-allura: var(--font-allura), 'Allura', cursive;
   --font-montserrat: var(--font-montserrat), 'Montserrat', sans-serif;
   --font-lato: var(--font-lato), 'Lato', sans-serif;
   --font-open-sans: var(--font-open-sans), 'Open Sans', sans-serif;
+  --color-spa-bg: #F7F5EE;
+  --color-spa-cream: #EFEBDD;
+  --color-spa-dark: #172A25;
+  --color-spa-green: #4D683F;
+  --color-spa-light-green: #DCE3D1;
+  --color-spa-muted: #58635F;
+  --color-spa-beige: #D8C8A5;
 }
 :root {
   --radius: 0.625rem;
@@ -210,6 +221,7 @@
 @utility font-marcellus { font-family: var(--font-marcellus); }
 @utility font-cormorant { font-family: var(--font-cormorant); }
 @utility font-script { font-family: var(--font-script); }
+@utility font-brittany { font-family: var(--font-brittany); }
 @utility font-karla { font-family: var(--font-karla); }
 @utility font-devanagari { font-family: var(--font-devanagari); }
 @utility font-playfair { font-family: var(--font-playfair); }
@@ -225,6 +237,18 @@
   100% { box-shadow: 0 0 0 0 oklch(0.65 0.18 145 / 0); }
 }
 @utility animate-pulse-ring { animation: pulse-ring 2s infinite; }
+
+@keyframes trust-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+@utility animate-trust-marquee {
+  animation: trust-marquee 30s linear infinite;
+}
+.animate-trust-marquee:hover {
+  animation-play-state: paused;
+}
+
 
 /* Custom Design System Button Styles */
 .btn-primary, .btn-copper {

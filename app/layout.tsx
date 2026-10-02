@@ -11,8 +11,24 @@ import {
   Montserrat,
   Lato,
   Open_Sans,
+  Inter,
+  Caveat,
 } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-inter",
+  display: "swap",
+});
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-caveat",
+  display: "swap",
+});
 
 const marcellus = Marcellus({
   subsets: ["latin"],
@@ -51,7 +67,7 @@ const cormorant = Cormorant_Garamond({
 
 const playfair = Playfair_Display({
   subsets: ["latin"],
-  weight: ["600", "700"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-playfair",
   display: "swap",
 });
@@ -174,7 +190,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${marcellus.variable} ${karla.variable} ${devanagari.variable} ${alexBrush.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${allura.variable} ${montserrat.variable} ${lato.variable} ${openSans.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${caveat.variable} ${marcellus.variable} ${karla.variable} ${devanagari.variable} ${alexBrush.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${allura.variable} ${montserrat.variable} ${lato.variable} ${openSans.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"
