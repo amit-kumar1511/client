@@ -63,49 +63,49 @@ export default function About() {
       </div>
 
       {/* RIGHT SPA IMAGE WITH STYLISH & INTERACTIVE OVERLAYS */}
-      <div className="relative group min-h-[350px] h-[550px] mt-[10%] overflow-hidden rounded-tr-[18%] rounded-bl-[18%] lg:min-h-[550px] cursor-pointer">
-        <Image
-          src="/images/about_massage_therapist.jpg"
-          alt="Luxury spa sanctuary treatment room"
-          fill
-          priority
-          sizes="(max-width: 1024px) 100vw, 58vw"
-          className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
-        />
+      <div className="relative z-10 flex items-center justify-center px-4 py-6 sm:px-8 sm:py-8 lg:py-10 lg:pl-4 lg:pr-12 xl:pr-16">
+        <div className="relative group w-full h-[320px] xs:h-[360px] sm:h-[420px] lg:h-[480px] xl:h-[530px] overflow-hidden rounded-tr-[18%] rounded-bl-[18%] shadow-2xl cursor-pointer">
+          <Image
+            src="/images/about_massage_therapist.jpg"
+            alt="Luxury spa sanctuary treatment room"
+            fill
+            priority
+            sizes="(max-width: 1024px) 92vw, 55vw"
+            className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+          />
 
-
-        {/* COMPACT INTERACTIVE TRUST CARD (Icon on Left, Text Next to Icon, Reduced Spacing) */}
-        <div className="absolute right-[4%] top-[6%] z-10 w-[175px] sm:w-[195px] rounded-2xl border border-white/30 bg-[#1e341d]/90 p-3 text-[#f7f4e9] shadow-2xl backdrop-blur-md transition-all duration-300 hover:scale-[1.03] hover:bg-[#182c17]/95 hover:border-white/50">
-          {trustItems.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={item.title}
-                className={`group/item flex items-center gap-2.5 py-2.5 ${index !== trustItems.length - 1 ? "border-b border-white/20" : ""
+          {/* COMPACT TRUST CARD */}
+          <div className="absolute left-2.5 top-2.5 sm:left-4 sm:top-4 z-10 w-[118px] xs:w-[132px] sm:w-[152px] rounded-xl border border-white/30 bg-[#1e341d]/90 p-1.5 sm:p-2 text-[#f7f4e9] shadow-lg backdrop-blur-md">
+            {trustItems.map((item, index) => {
+              const Icon = item.icon;
+              return (
+                <div
+                  key={item.title}
+                  className={`flex items-center gap-1.5 py-1 sm:py-1.5 ${
+                    index !== trustItems.length - 1 ? "border-b border-white/20" : ""
                   }`}
-              >
-                <div className="grid size-8 sm:size-9 shrink-0 place-items-center rounded-full border border-white/30 bg-white/10 text-[#e7e8c9] transition-all duration-300 group-hover/item:border-[#deb368] group-hover/item:bg-[#deb368] group-hover/item:text-[#14221e] group-hover/item:scale-110 shadow-sm">
-                  <Icon size={18} strokeWidth={1.75} />
+                >
+                  <div className="grid size-5 sm:size-6 shrink-0 place-items-center rounded-full border border-white/30 bg-white/10 text-[#e7e8c9] shadow-sm">
+                    <Icon className="size-3 sm:size-3.5" strokeWidth={1.75} />
+                  </div>
+
+                  <div className="min-w-0 flex-1">
+                    <h3 className="text-[9px] sm:text-[10.5px] font-montserrat font-semibold leading-tight text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-0.5 text-[7.5px] sm:text-[8.5px] font-lato text-[#e6e5d5] leading-tight opacity-90 truncate">
+                      {item.text}
+                    </p>
+                  </div>
                 </div>
+              );
+            })}
+          </div>
 
-                <div className="min-w-0 flex-1">
-                  <h3 className="text-[12px] sm:text-[13px] font-montserrat font-semibold leading-tight text-white transition-colors duration-200 group-hover/item:text-[#f0d489]">
-                    {item.title}
-                  </h3>
-                  <p className="mt-0.5 text-[10px] sm:text-[11px] font-lato text-[#e6e5d5] leading-tight opacity-90 truncate">
-                    {item.text}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-
-
-        {/* DECORATIVE FLOWER OVERLAY */}
-        <div className="pointer-events-none absolute bottom-[5%] left-[10%] sm:left-[25%] z-10 text-[85px] text-[#f5e8c8] select-none opacity-80 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
-          ✿
+          {/* DECORATIVE FLOWER OVERLAY */}
+          <div className="pointer-events-none absolute bottom-3 left-4 sm:bottom-[5%] sm:left-[10%] z-10 text-[50px] sm:text-[85px] text-[#f5e8c8] select-none opacity-80 transition-transform duration-500 group-hover:rotate-12 group-hover:scale-110">
+            ✿
+          </div>
         </div>
       </div>
     </section>

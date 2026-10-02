@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Clock, Heart, Sparkles, MessageCircle, ChevronDown, UserCheck } from "lucide-react";
+import { MessageCircle, ChevronDown } from "lucide-react";
 import Image from "next/image";
 
 function scrollTo(id: string) {
@@ -10,125 +10,101 @@ function scrollTo(id: string) {
 
 export default function Hero() {
   return (
-    <section id="top" className="relative min-h-[100dvh] w-full flex items-center justify-center bg-gradient-hero overflow-hidden py-20 sm:py-24 md:py-28 lg:py-32">
-      {/* image overlay */}
-      <div className="absolute inset-0 opacity-25">
+    <section
+      id="top"
+      className="relative min-h-[88dvh] sm:min-h-[100dvh] w-full flex items-center justify-center bg-gradient-hero overflow-hidden py-16 sm:py-24 md:py-28 lg:py-32"
+    >
+      {/* Background Spa Atmosphere Image */}
+      <div className="absolute inset-0 opacity-55">
         <Image
           src="/images/massage1.jpg"
           alt="Amazing Wellness Spa massage treatment atmosphere"
           fill
           priority
           sizes="100vw"
-          className="object-cover"
+          className="object-cover object-[center_35%] transition-transform duration-1000"
         />
       </div>
-      <div className="absolute inset-0 bg-gradient-to-b from-espresso/70 via-espresso/60 to-espresso/95" />
 
+      {/* Elegant Radial & Gradient Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-espresso/70 via-espresso/40 to-espresso/85" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-transparent via-espresso/35 to-espresso/75 pointer-events-none" />
+
+      {/* Hero Content */}
       <div className="relative z-10 mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 text-center text-white w-full">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="flex flex-wrap items-center justify-center gap-2 sm:gap-3"
-        >
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-white/10 backdrop-blur border border-white/20 text-[11px] sm:text-xs md:text-sm text-white">
-            <MapPin className="w-3.5 h-3.5 text-gold shrink-0" />
-            <span className="tracking-wide">Lajpat Nagar 2, New Delhi</span>
-          </div>
-
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-gradient-gold text-espresso text-[11px] sm:text-xs md:text-sm font-semibold tracking-wider uppercase shadow-soft">
-            <Sparkles className="w-3.5 h-3.5 shrink-0" /> Premium Wellness Experience
-          </div>
-        </motion.div>
-
+        
+        {/* Main Heading */}
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 25 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="mt-6 sm:mt-8 font-serif text-3xl sm:text-5xl md:text-6xl lg:text-7xl leading-[1.1] sm:leading-[1.05] font-medium"
+          transition={{ duration: 0.8, delay: 0.1 }}
+          className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl leading-[1.08] font-medium tracking-tight text-white drop-shadow-lg"
         >
           Relax, Rejuvenate
           <br />
-          <span className="italic text-gold font-normal">Your Body & Soul</span>
+          <span className="italic text-gold font-normal drop-shadow-md">Your Body & Soul</span>
         </motion.h1>
 
+        {/* Sub-eyebrow Tagline */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="mt-3 sm:mt-5 text-gold/90 text-xs sm:text-sm md:text-base tracking-[0.15em] sm:tracking-[0.2em] uppercase font-medium"
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-4 sm:mt-6 text-gold/95 text-xs sm:text-sm md:text-base tracking-[0.25em] uppercase font-medium drop-shadow-sm"
         >
           Amazing Wellness Spa · Lajpat Nagar 2
         </motion.p>
 
+        {/* Description Paragraph */}
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="mt-4 sm:mt-6 max-w-2xl mx-auto text-white/85 text-sm sm:text-base md:text-lg leading-relaxed px-2"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mt-4 sm:mt-6 max-w-2xl mx-auto text-white/95 text-sm sm:text-base md:text-lg leading-relaxed font-lato px-2 drop-shadow-sm"
         >
           Experience relaxing massage and wellness treatments crafted for comfort, calmness and complete renewal in the heart of Lajpat Nagar 2, New Delhi.
         </motion.p>
 
+        {/* Action Buttons */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.6 }}
-          className="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-2 sm:gap-3 text-xs sm:text-sm text-white/85"
-        >
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur">
-            <Clock className="w-3.5 h-3.5 text-gold shrink-0" /> Open 24 Hours (Online: 11 AM – 11 PM)
-          </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur">
-            <MapPin className="w-3.5 h-3.5 text-gold shrink-0" /> Near Samara Honda, Lajpat Nagar 2
-          </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur">
-            <UserCheck className="w-3.5 h-3.5 text-gold shrink-0" /> Contact: Sunny
-          </span>
-          <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur">
-            <Heart className="w-3.5 h-3.5 text-gold shrink-0" /> LGBTQ+ Friendly
-          </span>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.7 }}
+          transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto"
         >
           <button
             onClick={() => scrollTo("services")}
-            className="btn-copper w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm"
+            className="btn-copper w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm shadow-xl hover:scale-105 active:scale-95 transition-all"
           >
             Explore Services
           </button>
           <button
             onClick={() => scrollTo("book")}
-            className="btn-outline-cream w-full sm:w-auto px-7 py-3.5 text-xs sm:text-sm"
+            className="btn-outline-cream w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm shadow-xl hover:scale-105 active:scale-95 transition-all"
           >
             <MessageCircle className="w-4 h-4 shrink-0" /> Book Now
           </button>
         </motion.div>
       </div>
 
+      {/* Scroll Down Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.2, duration: 1 }}
-        className="hidden sm:flex absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 text-white/60 hover:text-white transition-colors"
+        transition={{ delay: 0.9, duration: 1 }}
+        className="hidden sm:flex absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 text-white/80 hover:text-white transition-colors"
       >
         <button
           onClick={() => scrollTo("about")}
           aria-label="Scroll down to About section"
-          className="flex flex-col items-center gap-1.5 focus:outline-hidden cursor-pointer"
+          className="flex flex-col items-center gap-1.5 focus:outline-none cursor-pointer"
         >
-          <span className="text-[10px] tracking-[0.3em] uppercase">Scroll</span>
+          <span className="text-[10px] tracking-[0.3em] uppercase font-medium">Scroll</span>
           <motion.div animate={{ y: [0, 6, 0] }} transition={{ repeat: Infinity, duration: 1.8 }}>
-            <ChevronDown className="w-4 h-4" />
+            <ChevronDown className="w-4 h-4 text-gold" />
           </motion.div>
         </button>
       </motion.div>
     </section>
   );
 }
-
