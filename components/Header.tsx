@@ -23,6 +23,7 @@ export default function Header() {
     ["Contact", "book"],
   ];
 
+  // Scroll detection ONLY for navbar background pill visibility, NOT for active section
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
@@ -33,8 +34,33 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Sync activeSection with URL hash on load & on hashchange
+  useEffect(() => {
+    const syncHash = () => {
+      if (typeof window === "undefined") return;
+      const hash = window.location.hash.replace("#", "");
+      if (hash && links.some(([, id]) => id === hash)) {
+        setActiveSection(hash);
+        setTimeout(() => {
+          scrollToSection(hash);
+        }, 100);
+      }
+    };
+
+    syncHash();
+    window.addEventListener("hashchange", syncHash);
+    return () => window.removeEventListener("hashchange", syncHash);
+  }, []);
+
   const handleNavClick = (id: string) => {
     setActiveSection(id);
+    if (typeof window !== "undefined") {
+      if (window.history.pushState) {
+        window.history.pushState(null, "", `#${id}`);
+      } else {
+        window.location.hash = `#${id}`;
+      }
+    }
     scrollToSection(id);
   };
 
@@ -42,7 +68,7 @@ export default function Header() {
     <header className="fixed top-3 sm:top-5 inset-x-0 z-50 px-3 sm:px-6 pointer-events-none">
       <div className="mx-auto max-w-6xl pointer-events-auto">
         
-        {/* Floating Pill Navbar — Smooth Motion animation on scroll */}
+        {/* Floating Pill Navbar */}
         <div className="relative flex items-center justify-between h-14 sm:h-16 px-4 sm:px-6 rounded-[999px]">
           
           {/* Animated Background Pill Layer */}
@@ -57,10 +83,10 @@ export default function Header() {
               duration: 0.45,
               ease: [0.22, 0.61, 0.36, 1],
             }}
-            className="absolute inset-0 rounded-[999px] bg-white/40 dark:bg-black/40 backdrop-blur-xl shadow-[0_10px_30px_-5px_rgba(0,0,0,0.1)] pointer-events-none"
+            className="absolute inset-0 rounded-[999px] bg-espresso/90 dark:bg-black/90 backdrop-blur-xl shadow-2xl border border-white/10 pointer-events-none"
           />
           
-          {/* 1. Left-aligned Logo & Typography Stack matching reference image */}
+          {/* 1. Left-aligned Logo & Typography Stack */}
           <a
             href="#top"
             onClick={(e) => {
@@ -82,11 +108,11 @@ export default function Header() {
             {/* Typography Stack */}
             <div className="flex flex-col justify-center leading-none">
               {/* Row 1: AMAZING (Poiret One) */}
-              <div className={`font-poiret text-[12px] xs:text-[13px] sm:text-base md:text-[17px] font-bold tracking-[0.2em] sm:tracking-[0.26em] uppercase transition-colors duration-300 ${scrolled ? "text-cocoa dark:text-[#f0d489]" : "text-[#f0d489] drop-shadow-xs"}`}>
+              <div className="font-poiret text-[12px] xs:text-[13px] sm:text-base md:text-[17px] font-bold tracking-[0.2em] sm:tracking-[0.26em] uppercase text-[#f0d489] drop-shadow-xs">
                 AMAZING
               </div>
               {/* Row 2: WELLNESS SPA (Josefin Sans Light) */}
-              <div className={`font-josefin text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] font-light tracking-[0.24em] sm:tracking-[0.32em] uppercase mt-0.5 transition-colors duration-300 ${scrolled ? "text-cocoa/90 dark:text-white/90" : "text-white/95"}`}>
+              <div className="font-josefin text-[7.5px] xs:text-[8.5px] sm:text-[9.5px] font-light tracking-[0.24em] sm:tracking-[0.32em] uppercase mt-0.5 text-white/95">
                 WELLNESS SPA
               </div>
             </div>
@@ -103,8 +129,6 @@ export default function Header() {
                   className={`relative text-xs sm:text-sm font-medium tracking-wide transition-all duration-300 py-1.5 px-3 sm:px-4 rounded-full cursor-pointer ${
                     isActive
                       ? "text-gold font-semibold"
-                      : scrolled
-                      ? "text-cocoa/90 dark:text-neutral-200 hover:text-gold"
                       : "text-white/90 hover:text-gold"
                   }`}
                 >
@@ -124,7 +148,7 @@ export default function Header() {
           {/* 3. Mobile Menu Trigger */}
           <div className="relative z-10 flex items-center gap-2 sm:gap-3 shrink-0">
             <button
-              className={`md:hidden p-1.5 rounded-[999px] transition-colors duration-300 ${scrolled ? "text-cocoa dark:text-white" : "text-white"}`}
+              className="md:hidden p-1.5 rounded-[999px] text-white transition-colors duration-300"
               onClick={() => setOpen(!open)}
               aria-label={open ? "Close menu" : "Open menu"}
             >
@@ -134,7 +158,7 @@ export default function Header() {
 
         </div>
 
-        {/* Mobile Dropdown Menu — Compact & positioned directly underneath navbar pill */}
+        {/* Mobile Dropdown Menu */}
         <AnimatePresence>
           {open && (
             <motion.div

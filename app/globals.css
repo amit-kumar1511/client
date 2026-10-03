@@ -1,5 +1,5 @@
-@import "tailwindcss";
 @import url('https://fonts.cdnfonts.com/css/brittany-signature');
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
