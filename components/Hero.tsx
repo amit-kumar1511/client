@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="scroll-mt-24 relative min-h-[580px] sm:min-h-screen w-full flex items-center justify-center bg-gradient-hero overflow-hidden py-16 sm:py-24 md:py-28 lg:py-32"
+      className="scroll-mt-24 relative min-h-[100dvh] h-screen w-full flex items-center justify-center bg-gradient-hero overflow-hidden py-20 sm:py-24 md:py-28 lg:py-32"
     >
       {/* Background Spa Atmosphere Image */}
       <div className="absolute inset-0 opacity-55">
