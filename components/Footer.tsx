@@ -2,16 +2,13 @@
 
 import { MapPin, Phone, Clock, MessageCircle, UserCheck } from "lucide-react";
 import Image from "next/image";
+import { scrollToSection } from "@/lib/utils";
 import { SERVICES } from "./Services";
 
 const PHONE = "+918797191340";
 const PHONE_DISPLAY = "+91 8797191340";
 const WA = "918797191340";
 const MAPS_LINK = "https://maps.google.com/?q=72/1,+2nd+Floor,+Near+A+Block,+Muthoot+Finance,+Near+Samara+Honda,+Lajpat+Nagar+2,+New+Delhi,+Delhi+110024";
-
-function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
 
 export default function Footer() {
   return (
@@ -44,7 +41,7 @@ export default function Footer() {
               ["Contact", "book"],
             ].map(([l, id]) => (
               <li key={id}>
-                <button onClick={() => scrollTo(id)} className="hover:text-gold transition-colors">
+                <button onClick={() => scrollToSection(id)} className="hover:text-gold transition-colors">
                   {l}
                 </button>
               </li>
@@ -56,7 +53,7 @@ export default function Footer() {
           <ul className="space-y-2 text-sm">
             {SERVICES.slice(0, 6).map((s) => (
               <li key={s.name}>
-                <button onClick={() => scrollTo("services")} className="hover:text-gold transition-colors text-left">
+                <button onClick={() => scrollToSection("services")} className="hover:text-gold transition-colors text-left">
                   {s.name}
                 </button>
               </li>

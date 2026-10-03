@@ -81,9 +81,8 @@ export default function About() {
               return (
                 <div
                   key={item.title}
-                  className={`flex items-center gap-1.5 py-1 sm:py-1.5 ${
-                    index !== trustItems.length - 1 ? "border-b border-white/20" : ""
-                  }`}
+                  className={`flex items-center gap-1.5 py-1 sm:py-1.5 ${index !== trustItems.length - 1 ? "border-b border-white/20" : ""
+                    }`}
                 >
                   <div className="grid size-5 sm:size-6 shrink-0 place-items-center rounded-full border border-white/30 bg-white/10 text-[#e7e8c9] shadow-sm">
                     <Icon className="size-3 sm:size-3.5" strokeWidth={1.75} />

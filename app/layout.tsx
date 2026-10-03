@@ -13,8 +13,24 @@ import {
   Open_Sans,
   Inter,
   Caveat,
+  Poiret_One,
+  Josefin_Sans,
 } from "next/font/google";
 import "./globals.css";
+
+const poiretOne = Poiret_One({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-poiret",
+  display: "swap",
+});
+
+const josefinSans = Josefin_Sans({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  variable: "--font-josefin",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
@@ -190,7 +206,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${caveat.variable} ${marcellus.variable} ${karla.variable} ${devanagari.variable} ${alexBrush.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${allura.variable} ${montserrat.variable} ${lato.variable} ${openSans.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${caveat.variable} ${marcellus.variable} ${karla.variable} ${devanagari.variable} ${alexBrush.variable} ${cormorant.variable} ${playfair.variable} ${greatVibes.variable} ${allura.variable} ${montserrat.variable} ${lato.variable} ${openSans.variable} ${poiretOne.variable} ${josefinSans.variable}`} suppressHydrationWarning>
       <head>
         <script
           type="application/ld+json"

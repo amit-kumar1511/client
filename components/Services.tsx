@@ -193,7 +193,7 @@ export const SERVICES = DETAILED_SERVICES.map((s) => ({
 
 export default function Services({ onBook }: { onBook: (name: string) => void }) {
   return (
-    <section id="services" className="py-0" style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}>
+    <section id="services" className="scroll-mt-24 py-0" style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}>
       {/* Section Header */}
       <div
         className="py-12 sm:py-16 text-center border-b border-[#e5dfd3]/70"

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { scrollToSection } from "@/lib/utils";
 import Header from "./Header";
 import Hero from "./Hero";
 import About from "./About";
@@ -18,16 +19,12 @@ import Footer from "./Footer";
 import FloatingWA from "./FloatingWA";
 import MobileBar from "./MobileBar";
 
-function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 export default function MainContent() {
   const [selectedService, setSelectedService] = useState("");
 
   const bookService = (name: string) => {
     setSelectedService(name);
-    setTimeout(() => scrollTo("book"), 50);
+    setTimeout(() => scrollToSection("book"), 50);
   };
 
   return (

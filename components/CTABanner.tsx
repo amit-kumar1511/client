@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Phone } from "lucide-react";
+import { scrollToSection } from "@/lib/utils";
 
 const PHONE = "+918797191340";
 
@@ -18,13 +19,9 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
   );
 }
 
-function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
-
 export default function CTABanner() {
   return (
-    <section className="py-16 sm:py-20 bg-gradient-hero relative overflow-hidden">
+    <section id="cta" className="scroll-mt-24 py-16 sm:py-20 bg-gradient-hero relative overflow-hidden">
       <div
         className="absolute inset-0 opacity-20"
         style={{ backgroundImage: "radial-gradient(circle at 30% 50%, oklch(0.78 0.11 78 / 0.4), transparent 40%)" }}
@@ -39,7 +36,7 @@ export default function CTABanner() {
           </p>
           <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
-              onClick={() => scrollTo("book")}
+              onClick={() => scrollToSection("book")}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 rounded-full bg-gradient-gold text-espresso font-medium shadow-luxury hover:scale-105 transition-transform"
             >
               Book Now

@@ -16,7 +16,8 @@ export default function TrustHighlights() {
 
   return (
     <section
-      className="relative w-full py-4 sm:py-4.5 mt-6 sm:mt-0 text-[#172a25] overflow-hidden border-y border-[#d8c397]/40 shadow-sm"
+      id="trust"
+      className="scroll-mt-24 relative w-full py-4 sm:py-4.5 mt-6 sm:mt-0 text-[#172a25] overflow-hidden border-y border-[#d8c397]/40 shadow-sm"
       style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}
     >
       {/* Background Ambient Warm Gradient */}

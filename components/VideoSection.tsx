@@ -16,7 +16,7 @@ export default function VideoSection() {
   return (
     <section
       id="experience"
-      className="relative py-12 sm:py-18 text-[#16211c] overflow-hidden"
+      className="scroll-mt-24 relative py-12 sm:py-18 text-[#16211c] overflow-hidden"
       style={{ background: "linear-gradient(180deg, #F5F2E8 0%, #EDE6D7 50%, #F3EEE2 100%)" }}
     >
       <div className="relative z-10 mx-auto max-w-[920px] px-4 sm:px-6 lg:px-8">

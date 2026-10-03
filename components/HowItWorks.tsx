@@ -32,7 +32,7 @@ export default function HowItWorks() {
   ];
 
   return (
-    <section id="how-it-works" className="relative py-12 sm:py-16 md:py-20 bg-[#18110b] text-[#f7f4e9] overflow-hidden">
+    <section id="how-it-works" className="scroll-mt-24 relative py-12 sm:py-16 md:py-20 bg-[#18110b] text-[#f7f4e9] overflow-hidden">
       
       {/* Background Spa Atmosphere Image */}
       <div className="absolute inset-0 z-0">

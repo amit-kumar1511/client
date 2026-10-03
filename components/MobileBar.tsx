@@ -1,12 +1,9 @@
 "use client";
 
 import { Phone, CalendarCheck } from "lucide-react";
+import { scrollToSection } from "@/lib/utils";
 
 const PHONE = "+918797191340";
-
-function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
 
 export default function MobileBar() {
   return (
@@ -19,7 +16,7 @@ export default function MobileBar() {
           <Phone className="w-4 h-4" /> Call Now
         </a>
         <button
-          onClick={() => scrollTo("book")}
+          onClick={() => scrollToSection("book")}
           className="inline-flex items-center justify-center gap-2 py-3 rounded-full bg-gradient-gold text-espresso text-sm font-medium"
         >
           <CalendarCheck className="w-4 h-4" /> Book Now

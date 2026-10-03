@@ -3,16 +3,13 @@
 import { motion } from "framer-motion";
 import { MessageCircle, ChevronDown } from "lucide-react";
 import Image from "next/image";
-
-function scrollTo(id: string) {
-  document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
-}
+import { scrollToSection } from "@/lib/utils";
 
 export default function Hero() {
   return (
     <section
       id="top"
-      className="relative min-h-[88dvh] sm:min-h-[100dvh] w-full flex items-center justify-center bg-gradient-hero overflow-hidden py-16 sm:py-24 md:py-28 lg:py-32"
+      className="scroll-mt-24 relative min-h-[580px] sm:min-h-screen w-full flex items-center justify-center bg-gradient-hero overflow-hidden py-16 sm:py-24 md:py-28 lg:py-32"
     >
       {/* Background Spa Atmosphere Image */}
       <div className="absolute inset-0 opacity-55">
@@ -22,7 +19,7 @@ export default function Hero() {
           fill
           priority
           sizes="100vw"
-          className="object-cover object-[center_35%] transition-transform duration-1000"
+          className="object-cover object-center sm:object-[center_35%]"
         />
       </div>
 
@@ -73,13 +70,13 @@ export default function Hero() {
           className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto"
         >
           <button
-            onClick={() => scrollTo("services")}
+            onClick={() => scrollToSection("services")}
             className="btn-copper w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm shadow-xl hover:scale-105 active:scale-95 transition-all"
           >
             Explore Services
           </button>
           <button
-            onClick={() => scrollTo("book")}
+            onClick={() => scrollToSection("book")}
             className="btn-outline-cream w-full sm:w-auto px-8 py-3.5 text-xs sm:text-sm shadow-xl hover:scale-105 active:scale-95 transition-all"
           >
             <MessageCircle className="w-4 h-4 shrink-0" /> Book Now
@@ -95,7 +92,7 @@ export default function Hero() {
         className="hidden sm:flex absolute bottom-4 sm:bottom-6 left-1/2 -translate-x-1/2 flex-col items-center gap-1.5 text-white/80 hover:text-white transition-colors"
       >
         <button
-          onClick={() => scrollTo("about")}
+          onClick={() => scrollToSection("about")}
           aria-label="Scroll down to About section"
           className="flex flex-col items-center gap-1.5 focus:outline-none cursor-pointer"
         >

@@ -283,7 +283,7 @@ export default function WhyUs({ data = defaultWhyUsData, className = "" }: WhyUs
   return (
     <section
       id="why-us"
-      className={`relative w-full bg-gradient-to-b from-[#F5F2E8] via-[#EDE6D7] to-[#F3EEE2] min-h-[720px] pt-[120px] pb-[100px] overflow-hidden text-[#172A25] ${className}`}
+      className={`scroll-mt-24 relative w-full bg-gradient-to-b from-[#F5F2E8] via-[#EDE6D7] to-[#F3EEE2] min-h-[720px] pt-[120px] pb-[100px] overflow-hidden text-[#172A25] ${className}`}
       aria-label="Why Choose Us"
     >
       <BackgroundBotanicals />
