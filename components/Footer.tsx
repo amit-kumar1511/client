@@ -1,12 +1,13 @@
 "use client";
 
-import { MapPin, Phone, Clock, MessageCircle, UserCheck } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, MessageCircle, UserCheck } from "lucide-react";
 import Image from "next/image";
 import { scrollToSection } from "@/lib/utils";
 import { SERVICES } from "./Services";
 
 const PHONE = "+918797191340";
 const PHONE_DISPLAY = "+91 8797191340";
+const EMAIL = "amazingwellnessspa.info@gmail.com";
 const WA = "918797191340";
 const MAPS_LINK = "https://maps.google.com/?q=72/1,+2nd+Floor,+Near+A+Block,+Muthoot+Finance,+Near+Samara+Honda,+Lajpat+Nagar+2,+New+Delhi,+Delhi+110024";
 
@@ -73,6 +74,22 @@ export default function Footer() {
               <Phone className="w-4 h-4 text-gold shrink-0 mt-0.5" />{" "}
               <a href={`tel:${PHONE}`} className="hover:text-gold">
                 {PHONE_DISPLAY}
+              </a>
+            </li>
+            <li className="flex gap-2">
+              <Mail className="w-4 h-4 text-gold shrink-0 mt-0.5" />{" "}
+              <a
+                href={`mailto:${EMAIL}`}
+                onClick={(e) => {
+                  const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                  if (!isMobile) {
+                    e.preventDefault();
+                    window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`, "_blank");
+                  }
+                }}
+                className="hover:text-gold break-all"
+              >
+                {EMAIL}
               </a>
             </li>
             <li className="flex gap-2">

@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const PHONE = "+918797191340";
 const PHONE_RAW = "918797191340";
-const EMAIL = "info@amazingwellnessspa.com";
+const EMAIL = "amazingwellnessspa.info@gmail.com";
 const WA_TEXT = encodeURIComponent(
   "Hello Sunny, I would like to know more about Amazing Wellness Spa services."
 );
@@ -144,8 +144,17 @@ export default function FloatingWA() {
               <a
                 key={ch.id}
                 href={ch.href}
-                target="_blank"
-                rel="nofollow noopener"
+                target={ch.id === "WhatsApp" ? "_blank" : undefined}
+                rel={ch.id === "WhatsApp" ? "nofollow noopener" : undefined}
+                onClick={(e) => {
+                  if (ch.id === "Email") {
+                    const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+                    if (!isMobile) {
+                      e.preventDefault();
+                      window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`, "_blank");
+                    }
+                  }
+                }}
                 className="flex items-center gap-2.5 px-2 py-1.5 rounded-lg hover:bg-neutral-100/90 transition-colors group cursor-pointer"
               >
                 <div className="shrink-0 flex items-center justify-center">

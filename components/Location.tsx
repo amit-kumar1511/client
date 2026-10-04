@@ -1,10 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MapPin, Phone, Clock, Navigation, MessageCircle, UserCheck } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Navigation, MessageCircle, UserCheck } from "lucide-react";
 
 const PHONE = "+918797191340";
 const PHONE_DISPLAY = "+91 8797191340";
+const EMAIL = "amazingwellnessspa.info@gmail.com";
 const WA = "918797191340";
 const MAPS_LINK = "https://maps.google.com/?q=72/1,+2nd+Floor,+Near+A+Block,+Muthoot+Finance,+Near+Samara+Honda,+Lajpat+Nagar+2,+New+Delhi,+Delhi+110024";
 const MAPS_EMBED =
@@ -12,8 +13,8 @@ const MAPS_EMBED =
 
 function SectionLabel({ children }: { children: React.ReactNode }) {
   return (
-    <div className="inline-flex items-center gap-2 text-xs tracking-[0.3em] uppercase text-gold font-medium">
-      <span className="w-8 h-px bg-gold" /> {children} <span className="w-8 h-px bg-gold" />
+    <div className="inline-flex items-center gap-2 text-xs tracking-[0.25em] uppercase text-[#4D683F] font-semibold">
+      <span className="w-8 h-px bg-[#4D683F]/40" /> {children} <span className="w-8 h-px bg-[#4D683F]/40" />
     </div>
   );
 }
@@ -33,17 +34,36 @@ function FadeUp({ children, delay = 0 }: { children: React.ReactNode; delay?: nu
 
 function InfoRow({ icon: Icon, title, value, href }: { icon: any; title: string; value: string; href?: string }) {
   const inner = (
-    <div className="flex items-start gap-4 p-4 rounded-xl bg-white border border-border/60 shadow-soft">
-      <div className="w-11 h-11 rounded-full bg-gradient-gold flex items-center justify-center shrink-0">
-        <Icon className="w-5 h-5 text-espresso" />
+    <div className="flex items-start gap-4 p-4 rounded-2xl bg-[#F5F2E8]/90 hover:bg-[#EDE6D7] transition-all cursor-pointer">
+      {/* Icon Circle Container matching Why Choose Us colors (#DCE3D1 bg & #4D683F icon) */}
+      <div className="w-12 h-12 rounded-full bg-[#DCE3D1] text-[#4D683F] flex items-center justify-center shrink-0 shadow-sm">
+        <Icon className="w-5 h-5 stroke-[1.5]" />
       </div>
-      <div className="min-w-0">
-        <div className="text-xs uppercase tracking-wider text-muted-foreground">{title}</div>
-        <div className="text-cocoa font-medium mt-0.5 leading-snug">{value}</div>
+      <div className="min-w-0 pt-0.5">
+        <div className="text-[11px] font-semibold uppercase tracking-wider text-[#4D683F]">{title}</div>
+        <div className="text-[#172A25] font-serif text-base font-medium mt-0.5 leading-snug break-all">{value}</div>
       </div>
     </div>
   );
-  return href ? <a href={href} className="block hover:opacity-90">{inner}</a> : inner;
+  return href ? (
+    <a
+      href={href}
+      onClick={(e) => {
+        if (href.startsWith("mailto:")) {
+          const isMobile = typeof navigator !== "undefined" && /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+          if (!isMobile) {
+            e.preventDefault();
+            window.open(`https://mail.google.com/mail/?view=cm&fs=1&to=${EMAIL}`, "_blank");
+          }
+        }
+      }}
+      className="block hover:opacity-95"
+    >
+      {inner}
+    </a>
+  ) : (
+    inner
+  );
 }
 
 export default function Location() {
@@ -57,14 +77,14 @@ export default function Location() {
         <div className="text-center">
           <FadeUp>
             <SectionLabel>Visit Us</SectionLabel>
-            <h2 className="mt-4 font-serif text-3xl sm:text-4xl lg:text-5xl text-cocoa">
-              Find Us in <span className="italic text-gold">Lajpat Nagar 2</span>
+            <h2 className="mt-3 font-serif text-3xl sm:text-4xl lg:text-5xl text-[#172A25]">
+              Find Us in <span className="italic text-[#4D683F]">Lajpat Nagar 2</span>
             </h2>
           </FadeUp>
         </div>
         <div className="mt-14 grid lg:grid-cols-2 gap-8 items-stretch">
           <FadeUp>
-            <div className="rounded-2xl overflow-hidden shadow-luxury h-full min-h-[360px]">
+            <div className="rounded-2xl overflow-hidden shadow-lg h-full min-h-[360px]">
               <iframe
                 src={MAPS_EMBED}
                 title="Amazing Wellness Spa location"
@@ -75,9 +95,9 @@ export default function Location() {
             </div>
           </FadeUp>
           <FadeUp delay={0.1}>
-            <div className="h-full bg-white rounded-2xl p-8 shadow-soft border border-border/60 flex flex-col">
-              <h3 className="font-serif text-2xl text-cocoa">Amazing Wellness Spa</h3>
-              <div className="mt-6 space-y-4">
+            <div className="h-full bg-white rounded-3xl p-8 shadow-lg flex flex-col">
+              <h3 className="font-serif text-2xl sm:text-3xl text-[#172A25]">Amazing Wellness Spa</h3>
+              <div className="mt-6 space-y-3.5">
                 <InfoRow
                   icon={MapPin}
                   title="Address"
@@ -85,28 +105,29 @@ export default function Location() {
                 />
                 <InfoRow icon={UserCheck} title="Contact Person" value="Sunny" />
                 <InfoRow icon={Phone} title="Phone / WhatsApp" value={PHONE_DISPLAY} href={`tel:${PHONE}`} />
+                <InfoRow icon={Mail} title="Email Address" value={EMAIL} href={`mailto:${EMAIL}`} />
                 <InfoRow icon={Clock} title="Operating Status" value="24 Hours Open (Online Hours: 11:00 AM – 11:00 PM)" />
               </div>
-              <div className="mt-8 pt-6 border-t border-border/40 grid sm:grid-cols-3 gap-3">
+              <div className="mt-8 pt-4 grid sm:grid-cols-3 gap-3">
                 <a
                   href={MAPS_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-cocoa text-white text-sm hover:bg-espresso transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#172A25] text-white text-sm font-medium hover:bg-[#4D683F] transition-colors shadow-sm"
                 >
-                  <Navigation className="w-4 h-4" /> Directions
+                  <Navigation className="w-4 h-4 text-[#d8ab5e]" /> Directions
                 </a>
                 <a
                   href={`tel:${PHONE}`}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full border border-cocoa/30 text-cocoa text-sm hover:bg-secondary transition-colors"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-[#DCE3D1] text-[#172A25] text-sm font-semibold hover:bg-[#cdd8c0] transition-colors shadow-sm"
                 >
-                  <Phone className="w-4 h-4" /> Call Now
+                  <Phone className="w-4 h-4 text-[#4D683F]" /> Call Now
                 </a>
                 <a
                   href={`https://wa.me/${WA}?text=${encodeURIComponent("Hello Sunny, I would like to book a session at Amazing Wellness Spa.")}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-gradient-gold text-espresso text-sm hover:scale-[1.02] transition-transform"
+                  className="inline-flex items-center justify-center gap-2 px-4 py-3 rounded-full bg-gradient-gold text-espresso text-sm font-semibold hover:scale-[1.02] transition-transform shadow-sm"
                 >
                   <MessageCircle className="w-4 h-4" /> WhatsApp
                 </a>
